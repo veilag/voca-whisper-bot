@@ -4,9 +4,7 @@ from .windows import (start_game_window, main_game_window, success_guessed_word_
                       unsuccessful_guessed_word_window,
                       end_of_game_window, neuro_error_window)
 
-from random import choice
-
-from ..events import get_random_word
+from .events import get_random_word
 
 
 async def set_global_state(event,
