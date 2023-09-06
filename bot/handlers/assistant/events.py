@@ -65,6 +65,8 @@ async def on_user_sentence_input(message: Message,
                                                               sentence=message_text,
                                                               corrected_sentence=corrected_sentence)
 
+    limited_explanation = correcting_explanation[:1024 - len(corrected_sentence) - 50] + "..." if len(correcting_explanation) - len(corrected_sentence) - 50 > 1024 else correcting_explanation
+
     await dialog_manager.update({
-        "neuro_explanation": correcting_explanation
+        "neuro_explanation": limited_explanation
     })

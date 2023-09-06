@@ -11,7 +11,7 @@ from ..states import MenuDialogWindows, GameDialogWindows, AssistantDialogWindow
 
 main_window: Window = Window(
     StaticMedia(
-        path="bot/static/media/menu/cover.jpg",
+        path="bot/static/media/start/cover.jpg",
         type=ContentType.PHOTO
     ),
     main_window_template,
@@ -53,7 +53,7 @@ main_window: Window = Window(
 
 about_window: Window = Window(
     StaticMedia(
-        path="bot/static/media/menu/cover.jpg",
+        path="bot/static/media/start/cover.jpg",
         type=ContentType.PHOTO
     ),
     about_project_template,

@@ -49,17 +49,17 @@ main_game_window: Window = Window(
     Group(
         Column(
             Button(
-                text=Const("Остановить игру"),
-                id="game_cancel_button",
-                when="cancel_state_closed",
-                on_click=show_cancel_state
-            ),
-            Button(
                 text=Const("Пропустить слово »"),
                 id="pass_word_button",
                 on_click=handle_next_word,
                 when="cancel_state_closed",
             ),
+            Button(
+                text=Const("Остановить игру"),
+                id="game_cancel_button",
+                when="cancel_state_closed",
+                on_click=show_cancel_state
+            )
         ),
 
         Row(
