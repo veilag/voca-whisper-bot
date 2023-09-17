@@ -42,5 +42,3 @@ async def process_prompt(prompt: str) -> str | None:
 
     except:
         return None
-
-

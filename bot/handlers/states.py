@@ -22,6 +22,9 @@ class MenuDialogWindows(StatesGroup):
     main: State = State()
 
     about: State = State()
+    about_design: State = State()
+    about_code: State = State()
+
     report: State = State()
 
 
@@ -29,3 +32,4 @@ class AssistantDialogWindows(StatesGroup):
     main: State = State()
 
     correct_sentence: State = State()
+    free_answer: State = State()

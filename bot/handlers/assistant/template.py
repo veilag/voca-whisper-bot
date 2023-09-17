@@ -24,3 +24,13 @@ correct_sentence_window_template: Jinja = Jinja("""
 Нейросеть исправит ее и напишет исправленный вариант
 {% endif %} 
 """)
+
+free_answer_window_template: Jinja = Jinja("""
+{% if not neuro_is_not_processing %}
+<b>Ответ ассистента</b>: 
+<code>{{ neuro_answer if neuro_answer != "" else "Загрузка..." }}</code>
+
+{% else %}
+<b>Напиши любой вопрос</b>, на который сможет ответить ассистент
+{% endif %} 
+""")

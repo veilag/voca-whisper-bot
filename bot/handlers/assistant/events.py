@@ -15,6 +15,28 @@ async def correct_user_sentence(sentence: str) -> str | None:
     return await process_prompt(prompt)
 
 
+async def answer_user_question(get_explanation_in_russian: bool,
+                               question: str) -> str | None:
+
+    prompt: str = ""
+
+    if get_explanation_in_russian:
+        prompt = f"""
+                Ты должен ответить на вопрос, который будет ниже
+                Вопрос: {question}
+                
+                Ты должен ответить на русском языке    
+            """
+
+    else:
+        prompt = f"""
+                You have to answer the question below
+                The question: {question}
+            """
+
+    return await process_prompt(prompt)
+
+
 async def get_correcting_explanation(get_explanation_in_russian: bool,
                                      sentence: str,
                                      corrected_sentence: str) -> str:
@@ -70,3 +92,24 @@ async def on_user_sentence_input(message: Message,
     await dialog_manager.update({
         "neuro_explanation": limited_explanation
     })
+
+
+async def on_user_question_input(message: Message,
+                                 input: ManagedTextInput,
+                                 dialog_manager: DialogManager,
+                                 message_text: str):
+    get_explanation_in_russian: ManagedCheckbox = dialog_manager.find("get_explanation_in_russian")
+
+    await dialog_manager.update({
+        "neuro_is_not_processing": False,
+        "neuro_answer": "",
+        "neuro_explanation": ""
+    })
+
+    neuro_answer = await answer_user_question(get_explanation_in_russian.is_checked(), message_text)
+
+    await dialog_manager.update({
+        "neuro_is_not_processing": False,
+        "neuro_answer": neuro_answer,
+    })
+

@@ -11,7 +11,7 @@ from ..states import MenuDialogWindows, GameDialogWindows, AssistantDialogWindow
 
 main_window: Window = Window(
     StaticMedia(
-        path="bot/static/media/start/cover.jpg",
+        path="bot/static/media/cover.jpg",
         type=ContentType.PHOTO
     ),
     main_window_template,
@@ -53,7 +53,7 @@ main_window: Window = Window(
 
 about_window: Window = Window(
     StaticMedia(
-        path="bot/static/media/start/cover.jpg",
+        path="bot/static/media/cover.jpg",
         type=ContentType.PHOTO
     ),
     about_project_template,
@@ -65,15 +65,15 @@ about_window: Window = Window(
     ),
 
     Row(
-        Url(
+        SwitchTo(
             text=Const("🎨 Figma"),
-            id="figma_url_button",
-            url=Const("https://figma.com")
+            id="go_to_design",
+            state=MenuDialogWindows.about_design
         ),
-        Url(
+        SwitchTo(
             text=Const("‍💻 GitHub"),
-            id="github_url_button",
-            url=Const("https://github.com")
+            id="go_to_code",
+            state=MenuDialogWindows.about_code
         ),
     ),
 
@@ -84,6 +84,47 @@ about_window: Window = Window(
     state=MenuDialogWindows.about,
     parse_mode=ParseMode.HTML
 )
+
+about_design_window: Window = Window(
+    StaticMedia(
+        path="bot/static/media/menu/about/design.jpg",
+        type=ContentType.PHOTO
+    ),
+
+    Url(
+        text=Const("Открыть"),
+        url=Const("www.figma.com")
+    ),
+
+    SwitchTo(
+        text=Const("« Вернуться назад"),
+        state=MenuDialogWindows.about,
+        id="go_to_about"
+    ),
+
+    state=MenuDialogWindows.about_design
+)
+
+about_code_window: Window = Window(
+    StaticMedia(
+        path="bot/static/media/menu/about/code.jpg",
+        type=ContentType.PHOTO
+    ),
+
+    Url(
+        text=Const("Открыть"),
+        url=Const("www.github.com")
+    ),
+
+    SwitchTo(
+        text=Const("« Вернуться назад"),
+        state=MenuDialogWindows.about,
+        id="go_to_about"
+    ),
+
+    state=MenuDialogWindows.about_code
+)
+
 
 report_window: Window = Window(
     StaticMedia(
