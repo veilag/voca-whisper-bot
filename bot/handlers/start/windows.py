@@ -10,7 +10,7 @@ from ..states import StartDialogWindows, MenuDialogWindows
 
 welcome_window: Window = Window(
     StaticMedia(
-        path="bot/static/media/cover.jpg",
+        path="bot/media/cover.jpg",
         type=ContentType.PHOTO
     ),
 

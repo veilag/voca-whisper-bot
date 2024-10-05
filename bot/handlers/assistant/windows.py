@@ -14,7 +14,7 @@ from ..states import AssistantDialogWindows
 
 main_window: Window = Window(
     StaticMedia(
-        path="bot/static/media/assistant/cover.jpg",
+        path="bot/media/assistant/cover.jpg",
         type=ContentType.PHOTO
     ),
 
@@ -42,7 +42,7 @@ main_window: Window = Window(
 
 correct_sentence_window: Window = Window(
     StaticMedia(
-        path="bot/static/media/assistant/cover.jpg",
+        path="bot/media/assistant/cover.jpg",
         type=ContentType.PHOTO
     ),
     correct_sentence_window_template,
@@ -72,7 +72,7 @@ correct_sentence_window: Window = Window(
 
 free_answer_window: Window = Window(
     StaticMedia(
-        path="bot/static/media/assistant/cover.jpg",
+        path="bot/media/assistant/cover.jpg",
         type=ContentType.PHOTO
     ),
 

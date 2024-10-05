@@ -1,5 +1,4 @@
 from aiogram.types import ContentType
-
 from aiogram_dialog import DialogManager
 from aiogram_dialog.api.entities import MediaAttachment
 
@@ -20,6 +19,6 @@ async def game_start_data(dialog_manager: DialogManager, **kwargs):
         "successfully_attempts": dialog_manager.dialog_data.get("successfully_attempts", 0),
         "photo": dialog_manager.dialog_data.get("photo", MediaAttachment(
             type=ContentType.PHOTO,
-            path="bot/static/media/game/process.jpg"
+            path="bot/media/game/process.jpg"
         ))
     }

@@ -1,24 +1,24 @@
 from aiogram.enums import ParseMode
 from aiogram.types import ContentType
 from aiogram_dialog import Window
-
 from aiogram_dialog.widgets.kbd import Button, Cancel, Row, Column, Back, SwitchTo, Group
 from aiogram_dialog.widgets.input import TextInput
 from aiogram_dialog.widgets.text import Const
 from aiogram_dialog.widgets.media import StaticMedia, DynamicMedia
-
-from .template import (welcome_window_template,
-                       unsuccessful_guessed_word_window_template, end_of_game_window_template,
-                       error_neuro_window_template, start_window_template)
-
+from .events import (
+    show_cancel_state, hide_cancel_state, on_user_guess_input,
+    continue_game, repeat_on_neuro_error, handle_next_word
+)
+from .template import (
+    welcome_window_template, unsuccessful_guessed_word_window_template,
+    end_of_game_window_template, error_neuro_window_template, start_window_template
+)
 from ..states import GameDialogWindows
 from .data import game_start_data
-from .events import show_cancel_state, hide_cancel_state, on_user_guess_input, continue_game, repeat_on_neuro_error, \
-    handle_next_word
 
 start_game_window: Window = Window(
     StaticMedia(
-        path="bot/static/media/game/cover.jpg",
+        path="bot/media/game/cover.jpg",
         type=ContentType.PHOTO
     ),
     start_window_template,
@@ -80,13 +80,13 @@ main_game_window: Window = Window(
     ),
 
     state=GameDialogWindows.main,
-    parse_mode="HTML",
+    parse_mode=ParseMode.HTML,
     getter=game_start_data
 )
 
 success_guessed_word_window: Window = Window(
     StaticMedia(
-        path="bot/static/media/game/neuro/success.jpg",
+        path="bot/media/game/neuro/success.jpg",
         type=ContentType.PHOTO
     ),
 
@@ -103,7 +103,7 @@ success_guessed_word_window: Window = Window(
 
 unsuccessful_guessed_word_window: Window = Window(
     StaticMedia(
-        path="bot/static/media/game/neuro/unsuccessfully.jpg",
+        path="bot/media/game/neuro/unsuccessfully.jpg",
         type=ContentType.PHOTO
     ),
     unsuccessful_guessed_word_window_template,
@@ -121,7 +121,7 @@ unsuccessful_guessed_word_window: Window = Window(
 
 end_of_game_window: Window = Window(
     StaticMedia(
-        path="bot/static/media/game/cover.jpg",
+        path="bot/media/game/cover.jpg",
         type=ContentType.PHOTO
     ),
     end_of_game_window_template,
@@ -137,7 +137,7 @@ end_of_game_window: Window = Window(
 
 neuro_error_window: Window = Window(
     StaticMedia(
-        path="bot/static/media/game/neuro/error.jpg",
+        path="bot/media/game/neuro/error.jpg",
         type=ContentType.PHOTO
     ),
     error_neuro_window_template,

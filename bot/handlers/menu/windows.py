@@ -1,17 +1,15 @@
 from aiogram.enums import ParseMode
 from aiogram.types import ContentType
-
 from aiogram_dialog import Window
 from aiogram_dialog.widgets.kbd import Button, Row, Start, SwitchTo, Back, Url
 from aiogram_dialog.widgets.text import Const
 from aiogram_dialog.widgets.media import StaticMedia
-
 from .template import main_window_template, about_project_template
 from ..states import MenuDialogWindows, GameDialogWindows, AssistantDialogWindows
 
 main_window: Window = Window(
     StaticMedia(
-        path="bot/static/media/cover.jpg",
+        path="bot/media/cover.jpg",
         type=ContentType.PHOTO
     ),
     main_window_template,
@@ -53,16 +51,10 @@ main_window: Window = Window(
 
 about_window: Window = Window(
     StaticMedia(
-        path="bot/static/media/cover.jpg",
+        path="bot/media/cover.jpg",
         type=ContentType.PHOTO
     ),
     about_project_template,
-
-    Url(
-        text=Const("📝 Notion"),
-        id="notion_url_button",
-        url=Const("https://notion.co")
-    ),
 
     Row(
         SwitchTo(
@@ -87,7 +79,7 @@ about_window: Window = Window(
 
 about_design_window: Window = Window(
     StaticMedia(
-        path="bot/static/media/menu/about/design.jpg",
+        path="bot/media/menu/about/design.jpg",
         type=ContentType.PHOTO
     ),
 
@@ -107,13 +99,13 @@ about_design_window: Window = Window(
 
 about_code_window: Window = Window(
     StaticMedia(
-        path="bot/static/media/menu/about/code.jpg",
+        path="bot/media/menu/about/code.jpg",
         type=ContentType.PHOTO
     ),
 
     Url(
         text=Const("Открыть"),
-        url=Const("www.github.com")
+        url=Const("www.github.com/veilag/voca-whisper-bot")
     ),
 
     SwitchTo(
@@ -128,7 +120,7 @@ about_code_window: Window = Window(
 
 report_window: Window = Window(
     StaticMedia(
-        path="bot/static/media/menu/report/cover.jpg",
+        path="bot/media/menu/report/cover.jpg",
         type=ContentType.PHOTO
     ),
 
